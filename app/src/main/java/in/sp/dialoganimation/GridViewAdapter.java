@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import in.sp.dialoganimation.dialog.DialogActivity;
+import in.sp.dialoganimation.dialog.UserListAvtivity;
+
 public class GridViewAdapter extends BaseAdapter {
 
     private static final int SIZE = 50;
@@ -41,17 +44,28 @@ public class GridViewAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         final View v = mInflater.inflate(R.layout.grid_item, null);
 
-        ((TextView)v.findViewById(R.id.text)).setText("" + position);
+        ((TextView) v.findViewById(R.id.text)).setText("" + position);
 
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(new Intent(mContext, DialogActivity.class));
-                i.putExtra("position", position);
 
-                ActivityOptions options = ActivityOptions
-                        .makeSceneTransitionAnimation((Activity) mContext, v, "transition");
-                mContext.startActivity(i, options.toBundle());
+                if (position == 0) {
+                    Intent i = new Intent(new Intent(mContext, UserListAvtivity.class));
+                    mContext.startActivity(i);
+
+                } else {
+                    Intent i = new Intent(new Intent(mContext, in.sp.dialoganimation.DialogActivity.class));
+                    i.putExtra("position", position);
+                    ActivityOptions options = ActivityOptions
+                            .makeSceneTransitionAnimation((Activity) mContext, v, "transition");
+                    mContext.startActivity(i, options.toBundle());
+                }
+
+                /*   */
+
+            /*    ActivityOptions optionss = ActivityOptions.makeSceneTransitionAnimation((Activity) mContext, v, mContext.getString(R.string.transition_dialog));
+                mContext.startActivity(i,  optionss.toBundle());*/
             }
         });
 

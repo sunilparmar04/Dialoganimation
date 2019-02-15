@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,9 +22,23 @@
             android:name=".DialogActivity"
             android:label="@string/title_activity_dialog"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent">
 
         </activity>
+
+        <activity
+            android:name=".dialog.DialogActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dialog">
+
+        </activity>
+
+        <activity
+            android:name=".dialog.UserListAvtivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Main" />
 
     </application>
 
